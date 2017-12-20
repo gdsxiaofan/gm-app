@@ -3,7 +3,9 @@ package com.example.bean.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,11 +17,17 @@ public class MainActivity extends AppCompatActivity {
         webview = new WebView(this);
         //设置WebView属性，能够执行Javascript脚本
         webview.getSettings().setJavaScriptEnabled(true);
+        //开启localstage
         webview.getSettings().setDomStorageEnabled(true);
         String appCachePath = getApplicationContext().getCacheDir().getAbsolutePath();
         webview.getSettings().setAppCachePath(appCachePath);
         webview.getSettings().setAllowFileAccess(true);
         webview.getSettings().setAppCacheEnabled(true);
+        //关掉游览器提示
+        webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        webview.getSettings().setSupportMultipleWindows(true);
+        webview.setWebViewClient(new WebViewClient());
+        webview.setWebChromeClient(new WebChromeClient());
         //加载需要显示的网页
 //        webview.loadUrl("file:///android_asset/index.html");
         webview.loadUrl("http://47.93.20.244:8090/app/index.html");
