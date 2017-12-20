@@ -15,8 +15,15 @@ public class MainActivity extends AppCompatActivity {
         webview = new WebView(this);
         //设置WebView属性，能够执行Javascript脚本
         webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setDomStorageEnabled(true);
+        String appCachePath = getApplicationContext().getCacheDir().getAbsolutePath();
+        webview.getSettings().setAppCachePath(appCachePath);
+        webview.getSettings().setAllowFileAccess(true);
+        webview.getSettings().setAppCacheEnabled(true);
         //加载需要显示的网页
-        webview.loadUrl("file:///android_asset/index.html");
+//        webview.loadUrl("file:///android_asset/index.html");
+        webview.loadUrl("http://47.93.20.244:8090/app/index.html");
+
         //设置Web视图
         setContentView(webview);
 //        setContentView(R.layout.activity_main);
