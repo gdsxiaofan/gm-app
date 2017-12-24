@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         webview.setWebChromeClient(new WebChromeClient());
         //加载需要显示的网页
 //        webview.loadUrl("file:///android_asset/index.html");
-        webview.loadUrl("http://47.93.20.244:8090/app/index.html");
+        webview.loadUrl("http://47.93.20.244:8090/app/index.html?#/");
 
         //设置Web视图
         setContentView(webview);
