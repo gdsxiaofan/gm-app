@@ -118,14 +118,21 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
-            if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
-                Toast t=Toast.makeText(MainActivity.this, "需要SD卡。", Toast.LENGTH_LONG);
-                t.setGravity(Gravity.CENTER, 0, 0);
-                t.show();
-                return;
-            }
-            DownloaderTask task=new DownloaderTask();
-            task.execute(url);
+            //自定义下载
+//            if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+//                Toast t=Toast.makeText(MainActivity.this, "需要SD卡。", Toast.LENGTH_LONG);
+//                t.setGravity(Gravity.CENTER, 0, 0);
+//                t.show();
+//                return;
+//            }
+//            DownloaderTask task=new DownloaderTask();
+//            task.execute(url);
+            //交由游览器下载
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+
         }
     }
 
